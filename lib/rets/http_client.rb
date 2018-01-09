@@ -57,7 +57,7 @@ module Rets
       headers = extra_headers.merge(rets_extra_headers)
       res = nil
       log_http_traffic("GET", url, params, headers) do
-        res = http.get(url, params, headers)
+        res = http.get(url, params, headers, :follow_redirect => true)
       end
       Parser::ErrorChecker.check(res)
       res
